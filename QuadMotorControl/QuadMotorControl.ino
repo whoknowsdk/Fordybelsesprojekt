@@ -10,17 +10,19 @@
 #include "SoundControl.h"
 #include "BehaviouralControl.h"
 #include "ControllerReceiver.h"
+#include "Screen.h"
 
 // CODE
 
 void setup() {
   Serial.begin(9600);
-  MotorSetup();
+  ScreenSetup();
+  //MotorSetup();
   //SensorSetup();
-  ReceiverSetup();
-  showSensorInfo = false;
-  joystickControlOn = false;
-  ChangeDirection(North, 255);
+  //ReceiverSetup();
+  //showSensorInfo = false;
+  //joystickControlOn = false;
+  //ChangeDirection(North, 255);
 }
 
 void loop() {/*
