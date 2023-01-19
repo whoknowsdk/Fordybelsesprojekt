@@ -13,6 +13,7 @@
 */
 #include "Screen.h"
 #include "SoundDetection.h"
+#include "RFID.h"
 
 // CODE
 
@@ -20,6 +21,7 @@ void setup() {
   Serial.begin(9600);
   ScreenSetup();
   SoundDetectionSetup();
+  RFIDSetup();
   //MotorSetup();
   //SensorSetup();
   //ReceiverSetup();
@@ -30,6 +32,7 @@ void setup() {
 
 void loop() {
   SoundDetectionLoop(false);
+  RFIDLoop();
   /*
   if (joystickControlOn) {
     JoystickLoop();
