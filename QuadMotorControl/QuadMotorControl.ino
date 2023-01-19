@@ -1,5 +1,5 @@
 // Includes
-#include "Variables.h"
+/*#include "Variables.h"
 #include "DirectionEnum.h"
 #include "DirectionChange.h"
 #include "JoystickControl.h"
@@ -10,13 +10,16 @@
 #include "SoundControl.h"
 #include "BehaviouralControl.h"
 #include "ControllerReceiver.h"
+*/
 #include "Screen.h"
+#include "SoundDetection.h"
 
 // CODE
 
 void setup() {
   Serial.begin(9600);
   ScreenSetup();
+  SoundDetectionSetup();
   //MotorSetup();
   //SensorSetup();
   //ReceiverSetup();
@@ -25,7 +28,9 @@ void setup() {
   //ChangeDirection(North, 255);
 }
 
-void loop() {/*
+void loop() {
+  SoundDetectionLoop(false);
+  /*
   if (joystickControlOn) {
     JoystickLoop();
   }*/
