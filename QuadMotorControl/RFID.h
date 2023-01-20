@@ -69,6 +69,7 @@ void RFIDLoop()
     }
 
     if (!cardAllowed){
+      energy += 5;
       Serial.println("Access Denied");
       Serial.println();
     }

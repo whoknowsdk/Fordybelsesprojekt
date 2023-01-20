@@ -1,3 +1,8 @@
+//BASICS
+int social = 50;
+int energy = 50;
+int mood = 50;
+
 // VARIABLE SETUP
 //
 // M = Motor

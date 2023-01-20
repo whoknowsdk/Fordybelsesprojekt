@@ -1,5 +1,6 @@
 // Includes
-/*#include "Variables.h"
+#include "Variables.h"
+/*
 #include "DirectionEnum.h"
 #include "DirectionChange.h"
 #include "JoystickControl.h"
@@ -31,6 +32,16 @@ void setup() {
 }
 
 void loop() {
+  lcd.setCursor(0, 0);
+  lcd.print("Mood: " + String(mood));
+  lcd.setCursor(0, 1);
+  lcd.print("Energi: " + String(energy));
+  lcd.setCursor(0, 2);
+  lcd.print("Social: " + String(social));
+  lcd.setCursor(0,3);
+  lcd.print("(^-^)");
+
+
   SoundDetectionLoop(false);
   RFIDLoop();
   /*
