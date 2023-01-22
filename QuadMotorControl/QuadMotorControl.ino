@@ -4,8 +4,8 @@
 #include "DirectionEnum.h"
 #include "DirectionChange.h"
 #include "JoystickControl.h"
-#include "MotorSetup.h"
-#include "SensorControl.h"
+#include "MotorSetup.h"*/
+#include "SensorControl.h"/*
 #include "StateEnum.h"
 #include "ActionsEnum.h"
 #include "SoundControl.h"
@@ -13,8 +13,8 @@
 #include "ControllerReceiver.h"
 */
 #include "Screen.h"
-#include "SoundDetection.h"
-#include "RFID.h"
+//#include "SoundDetection.h"
+//#include "RFID.h"
 
 // CODE
 
@@ -22,11 +22,11 @@ void setup() {
   Serial.begin(9600);
   ScreenSetup();
   //SoundDetectionSetup();
-  RFIDSetup();
+  //RFIDSetup();
   //MotorSetup();
-  //SensorSetup();
+  SensorSetup();
   //ReceiverSetup();
-  //showSensorInfo = false;
+  showSensorInfo = true;
   //joystickControlOn = false;
   //ChangeDirection(North, 255);
 }
@@ -43,13 +43,13 @@ void loop() {
 
 
   //SoundDetectionLoop(false);
-  RFIDLoop();
+  //RFIDLoop();
   /*
   if (joystickControlOn) {
     JoystickLoop();
   }*/
 
-  //SensorLoop();
+  SensorLoop();
   //BehavioralLoop();
   //ReceiverLoop();
 }

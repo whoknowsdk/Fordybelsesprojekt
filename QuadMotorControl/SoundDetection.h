@@ -1,7 +1,7 @@
-#define Mic1 A0
-#define Mic2 A1
-#define Mic3 A2
-#define Mic4 A3
+#define Mic1 A1
+#define Mic2 A0
+#define Mic3 A3
+#define Mic4 A2
 
 int ListL = 128;
 int Arr1[128];

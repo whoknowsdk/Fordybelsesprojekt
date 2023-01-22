@@ -56,15 +56,15 @@ bool joystickControlOn = false;
 // E = East
 // W = West
 
-int ECN = 40;
-int ECE = 41;
-int ECS = 38;
-int ECW = 39;
+int ECN = 48;
+int ECE = 46;
+int ECS = 42;
+int ECW = 44;
 
-int TRN = 45;
+int TRN = 49;
 int TRE = 47;
-int TRS = 44;
-int TRW = 46;
+int TRS = 43;
+int TRW = 45;
 
 float distance_N;
 float distance_E;
