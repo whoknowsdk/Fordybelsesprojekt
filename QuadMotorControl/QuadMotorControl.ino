@@ -21,7 +21,7 @@
 void setup() {
   Serial.begin(9600);
   ScreenSetup();
-  SoundDetectionSetup();
+  //SoundDetectionSetup();
   RFIDSetup();
   //MotorSetup();
   //SensorSetup();
@@ -42,7 +42,7 @@ void loop() {
   lcd.print("(^-^)");
 
 
-  SoundDetectionLoop(false);
+  //SoundDetectionLoop(false);
   RFIDLoop();
   /*
   if (joystickControlOn) {
