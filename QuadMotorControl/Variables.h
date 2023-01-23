@@ -1,6 +1,4 @@
 //BASICS
-int social = 50;
-int energy = 50;
 int mood = 50;
 
 // VARIABLE SETUP
@@ -46,6 +44,8 @@ bool showDirectionInfo = false;
 bool showJoystickInfo = false;
 bool showSensorInfo = false;
 bool joystickControlOn = false;
+
+int DirCur;
 
 // Sensor Variables
 

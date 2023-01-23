@@ -1,19 +1,18 @@
 // Includes
 #include "Variables.h"
-/*
 #include "DirectionEnum.h"
 #include "DirectionChange.h"
 #include "JoystickControl.h"
-#include "MotorSetup.h"*/
-#include "SensorControl.h"/*
+#include "MotorSetup.h"
+#include "SensorControl.h"
 #include "StateEnum.h"
-#include "ActionsEnum.h"
 #include "SoundControl.h"
 #include "BehaviouralControl.h"
-#include "ControllerReceiver.h"
-*/
+#include "SoundDetection.h"
+#include "DistanceMeasure.h"
+//#include "ControllerReceiver.h"
+
 #include "Screen.h"
-//#include "SoundDetection.h"
 //#include "RFID.h"
 
 // CODE
@@ -35,10 +34,6 @@ void loop() {
   lcd.setCursor(0, 0);
   lcd.print("Mood: " + String(mood));
   lcd.setCursor(0, 1);
-  lcd.print("Energi: " + String(energy));
-  lcd.setCursor(0, 2);
-  lcd.print("Social: " + String(social));
-  lcd.setCursor(0,3);
   lcd.print("(^-^)");
 
 
@@ -50,6 +45,9 @@ void loop() {
   }*/
 
   SensorLoop();
+  if (DirCur ==  0){
+    ActionPicker();
+    }
   //BehavioralLoop();
   //ReceiverLoop();
 }

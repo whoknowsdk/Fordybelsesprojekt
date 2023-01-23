@@ -1,4 +1,5 @@
 void ChangeDirection(Direction newDirection){
+  DirCur = newDirection;
   if (newDirection == Stop){
     digitalWrite(TLM_1, LOW);
     digitalWrite(TLM_2, LOW);

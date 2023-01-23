@@ -6,6 +6,7 @@
 enum State {
   Homing,
   Happy,
+  Neutral,
   Scared,
   Depressed,
   
