@@ -54,6 +54,10 @@ void loop() {
       MsgPicker();
       LastMsg = millis();
     }
+  if (millis() - LastDrop > RunTime*2/100){
+    LastDrop = millis();
+    happiness = happiness - 1;
+    }
   //BehavioralLoop();
   //ReceiverLoop();
 }
