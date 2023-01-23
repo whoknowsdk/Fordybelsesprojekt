@@ -28,11 +28,12 @@ void setup() {
   showSensorInfo = true;
   //joystickControlOn = false;
   //ChangeDirection(North, 255);
+  
 }
 
 void loop() {
   lcd.setCursor(0, 0);
-  lcd.print("Mood: " + String(mood));
+  lcd.print("Mood: " + String(happiness));
   lcd.setCursor(0, 1);
   lcd.print("(^-^)");
 
@@ -47,6 +48,11 @@ void loop() {
   SensorLoop();
   if (DirCur ==  0){
     ActionPicker();
+    }
+  
+  if (millis() - LastMsg > 12000){
+      MsgPicker();
+      LastMsg = millis();
     }
   //BehavioralLoop();
   //ReceiverLoop();

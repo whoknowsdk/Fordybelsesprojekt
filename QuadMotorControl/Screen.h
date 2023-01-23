@@ -55,15 +55,18 @@ String RanMsg (String arr[], int arrL){
   return arr[ran];
   }
 
-/*void MsgPicker(){
-  if (happiness >85){
-      RanMsg(VeryHappyMsg, 8);
-    }
-  else if (happiness  > 70) {RanMsg(HappyMsg, 7);}
-  else if (happiness  > 45) {RanMsg(NeutralMsg, 7);}
-  else if (happiness  > 15) {RanMsg(SadMsg, 9);}
-  else if (happiness  > 0) {RanMsg(Depressed, 9);}
-  }*/
+void MsgPicker(){
+  String Msg = "";
+  if (happiness >85){Msg =  RanMsg(VeryHappyMsg, 8);}
+  else if (happiness  > 70) {Msg = RanMsg(HappyMsg, 7);}
+  else if (happiness  > 45) {Msg = RanMsg(NeutralMsg, 7);}
+  else if (happiness  > 15) {Msg = RanMsg(SadMsg, 9);}
+  else if (happiness  > 0) {Msg = RanMsg(DepressedMsg, 9);}
+  lcd.setCursor(0, 0);
+  lcd.print("                ");
+  lcd.setCursor(0, 0);
+  lcd.print(Msg);
+  }
 
 void ScreenSetup()
 {

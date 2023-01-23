@@ -1,5 +1,6 @@
 //BASICS
 int mood = 50;
+int LastMsg = millis();
 
 // VARIABLE SETUP
 //
