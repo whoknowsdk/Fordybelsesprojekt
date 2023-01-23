@@ -14,9 +14,10 @@
 #include "TouchSensor.h"
 #include "AccelerometerControle.h"
 #include "DistanceMeasure.h"
-#include "ActionChooser.h"
+
 //#include "ControllerReceiver.h"
 #include "Screen.h"
+#include "ActionChooser.h"
 //#include "RFID.h"
 
 // CODE
@@ -35,7 +36,7 @@ void setup() {
   
 }
 
-void loop() {
+void loop(){
   lcd.setCursor(0, 0);
   lcd.print("Mood: " + String(happiness));
   lcd.setCursor(0, 1);
@@ -45,8 +46,10 @@ void loop() {
   // DirCur = Direction Currently - For Blomst skyld findes denne kommentar. 
   if (DirCur ==  0){
     int waitTmp = millis();
-    while (millis() - waitTmp < 2000) {}
-    ActionPicker();
+    if (millis() - waitTmp > 2000) {
+      ActionPicker();
+      waitTmp = millis();
+      }    
     }
   
   if (millis() - LastMsg > 12000){
@@ -58,5 +61,4 @@ void loop() {
     happiness = happiness - 1;
     }
   TouchLoop();
-
 }

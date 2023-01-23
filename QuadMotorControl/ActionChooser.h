@@ -13,38 +13,34 @@ void sang(){
 void lur(){
     FindWall(true);
     int TStart = millis();
-  while (millis()-TStart > 60000){}  
-  }
+}
 void snurreRundt(){
   // SPiiinnnnnn
   int ran = random(1, 4);
   int LvsR = random(1, 3);
   int wait = ran * 1000;
-    
+ 
+  int TStart = millis();
   if (LvsR = 1){ChangeDirection(RotateLeft, 255);}
   else {ChangeDirection(RotateRight, 255);}
-  int TStart = millis();
-  while (millis()-TStart > wait){}  
-  }
+}
+
 void opmearksomhed(){
   // Lyd
     MotionDirection();
   }
+  
 void selvhad(){
     FindWall(false);
   }
 void vrede(){
-    // Lyd
-    DetectSound(2000, 128);
-    int TStart = millis();
-  while (millis()-TStart > 5000){}  
-  }
+   // Lyd
+    MotionDirection();
+}
 
 void nysgerrig(){
     DetectSound(2000, 128);
-    int TStart = millis();
-  while (millis()-TStart > 3000){}  
-  }
+}
 
 // ActiveAction
 // ChangeDirection(dir, speed);
