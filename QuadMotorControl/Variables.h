@@ -18,25 +18,25 @@ int LastDrop = millis();
 //
 // Left Side Moters
 
-int TREN = 22;
-int BREN = 23;
+int TREN = 33;
+int BREN = 27;
 
-int TRM_1 = 32;
-int TRM_2 = 33;
+int TRM_1 = 29;
+int TRM_2 = 30;
 
-int BRM_1 = 26;
-int BRM_2 = 27;
+int BRM_1 = 25;
+int BRM_2 = 26;
 
 //Right Side Motors
 
-int TLEN = 31;
-int BLEN = 30;
+int TLEN = 22;
+int BLEN = 28;
 
-int TLM_1 = 34;
-int TLM_2 = 35;
+int TLM_1 = 32;
+int TLM_2 = 31;
 
-int BLM_1 = 25;
-int BLM_2 = 24;
+int BLM_1 = 24;
+int BLM_2 = 23;
 
 // Other motor variables
 
