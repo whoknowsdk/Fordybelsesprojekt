@@ -1,38 +1,13 @@
-float filterArrayN[10];
-float filterArrayS[10];
-float filterArrayE[10];
-float filterArrayW[10];
 
-float filterArrayCompN[10];
-float filterArrayCompS[10];
-float filterArrayCompE[10];
-float filterArrayCompW[10];
 
-float distN;
-float distS;
-float distE;
-float distW;
-
-float distCompN;
-float distCompS;
-float distCompE;
-float distCompW;
-
-float distDiffN;
-float distDiffS;
-float distDiffE;
-float distDiffW;
-
-int distance_cm;
-
-float ultrasonicMeasure(int TRIG_PIN, int ECHO_PIN) {
+float ultraMeasure(int TRIG_PIN, int ECHO_PIN) {
   distance_cm = GetDistance(TRIG_PIN, ECHO_PIN);
   return distance_cm;
 }
 
 float filter(int TRIG_PIN, int ECHO_PIN, float filterArray[]) {
     for (int sample = 0; sample < 10; sample++) {
-    filterArray[sample] = ultrasonicMeasure(TRIG_PIN, ECHO_PIN);
+    filterArray[sample] = ultraMeasure(TRIG_PIN, ECHO_PIN);
     int TStart = millis();
     while (millis()-TStart > 30){}   // to avoid untrasonic interfering
   }

@@ -33,7 +33,7 @@ void AccelerometerSetup()
   
   // Calibrate gyroscope. The calibration must be at rest.
   // If you don't want calibrate, comment this line.
-  mpu.CalibrateGyro();
+  mpu.calibrateGyro();
 
   // Set threshold sensivty. Default 3.
   // If you don't want use threshold, comment this line or set 0.

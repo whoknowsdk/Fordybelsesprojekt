@@ -4,6 +4,35 @@ int LastMsg = millis();
 int RunTime = 60*15;
 int LastDrop = millis();
 
+// Dist Measure
+
+float filterArrayN[10];
+float filterArrayS[10];
+float filterArrayE[10];
+float filterArrayW[10];
+
+float filterArrayCompN[10];
+float filterArrayCompS[10];
+float filterArrayCompE[10];
+float filterArrayCompW[10];
+
+float distN;
+float distS;
+float distE;
+float distW;
+
+float distCompN;
+float distCompS;
+float distCompE;
+float distCompW;
+
+float distDiffN;
+float distDiffS;
+float distDiffE;
+float distDiffW;
+
+int distance_cm;
+
 // VARIABLE SETUP
 //
 // M = Motor
