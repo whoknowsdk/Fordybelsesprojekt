@@ -42,6 +42,8 @@ void loop() {
   SensorLoop();
   // DirCur = Direction Currently - For Blomst skyld findes denne kommentar. 
   if (DirCur ==  0){
+    int waitTmp = millis();
+    while (millis() - waitTmp < 2000) {}
     ActionPicker();
     }
   
