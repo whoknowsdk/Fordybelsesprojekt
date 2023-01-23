@@ -55,7 +55,7 @@ String RanMsg (String arr[], int arrL){
   return arr[ran];
   }
 
-void MsgPicker(){
+/*void MsgPicker(){
   if (happiness >85){
       RanMsg(VeryHappyMsg, 8);
     }
@@ -63,11 +63,11 @@ void MsgPicker(){
   else if (happiness  > 45) {RanMsg(NeutralMsg, 7);}
   else if (happiness  > 15) {RanMsg(SadMsg, 9);}
   else if (happiness  > 0) {RanMsg(Depressed, 9);}
-  }
+  }*/
 
 void ScreenSetup()
 {
-  lcd.init();                      // initialize the lcd\
+  lcd.init(); // initialize the lcd\
   // Print a message to the LCD.
   lcd.backlight();
   lcd.setCursor(0, 0);
