@@ -11,6 +11,7 @@
 #include "SoundDetection.h"
 #include "DistanceMeasure.h"
 #include "TouchSensor.h"
+#include "AccelerometerControle.h"
 //#include "ControllerReceiver.h"
 
 #include "Screen.h"
@@ -38,15 +39,8 @@ void loop() {
   lcd.setCursor(0, 1);
   lcd.print("(^-^)");
 
-
-  //SoundDetectionLoop(false);
-  //RFIDLoop();
-  /*
-  if (joystickControlOn) {
-    JoystickLoop();
-  }*/
-
   SensorLoop();
+  // DirCur = Direction Currently - For Blomst skyld findes denne kommentar. 
   if (DirCur ==  0){
     ActionPicker();
     }
@@ -60,6 +54,5 @@ void loop() {
     happiness = happiness - 1;
     }
   TouchLoop();
-  //BehavioralLoop();
-  //ReceiverLoop();
+
 }
