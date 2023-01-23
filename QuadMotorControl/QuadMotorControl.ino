@@ -10,6 +10,7 @@
 #include "BehaviouralControl.h"
 #include "SoundDetection.h"
 #include "DistanceMeasure.h"
+#include "TouchSensor.h"
 //#include "ControllerReceiver.h"
 
 #include "Screen.h"
@@ -58,6 +59,7 @@ void loop() {
     LastDrop = millis();
     happiness = happiness - 1;
     }
+  TouchLoop();
   //BehavioralLoop();
   //ReceiverLoop();
 }
