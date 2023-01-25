@@ -32,7 +32,6 @@ int depressedMinDistance = 100;
 // Variables
 //
 
-int happiness = 100;
 /*
 char songs[] = {
   "sang1",

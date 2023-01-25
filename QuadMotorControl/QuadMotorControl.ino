@@ -19,12 +19,16 @@
 #include "Screen.h"
 #include "ActionChooser.h"
 //#include "RFID.h"
-
+  long waitTmp = millis();
 // CODE
 
 void setup() {
   Serial.begin(9600);
   ScreenSetup();
+  lcd.setCursor(0, 0);
+  lcd.print("Mood: " + String(mood) + " ");
+  lcd.setCursor(0, 1);
+  lcd.print("(^-^)");
   //SoundDetectionSetup();
   //RFIDSetup();
   //MotorSetup();
@@ -36,29 +40,35 @@ void setup() {
   
 }
 
-void loop(){
-  lcd.setCursor(0, 0);
-  lcd.print("Mood: " + String(happiness));
-  lcd.setCursor(0, 1);
-  lcd.print("(^-^)");
+void loop(){  
+  /*if (millis() - waitTmp > 5000) {
+     ChangeDirection(North, 255);
+     waitTmp = millis();
+    }*/
 
-  SensorLoop();
-  // DirCur = Direction Currently - For Blomst skyld findes denne kommentar. 
-  if (DirCur ==  0){
-    int waitTmp = millis();
-    if (millis() - waitTmp > 2000) {
-      ActionPicker();
-      waitTmp = millis();
-      }    
+  //SensorLoop();
+  // DirCur = Direction Currently - For Bloms' skyld findes denne kommentar. 
+
+
+
+  if (millis() - ActionStart > ActionTime) {
+      //lcd.print("Doing something");
+      ActionStart = millis();
+      ActionPicker();  
     }
   
-  if (millis() - LastMsg > 12000){
+  if (millis() - LastMsgT > 3000){
       MsgPicker();
-      LastMsg = millis();
+      LastMsgT = millis();
     }
-  if (millis() - LastDrop > RunTime*2/100){
+
+  if (millis() - LastDrop > 10000){
     LastDrop = millis();
-    happiness = happiness - 1;
+    if (mood > 0){
+        mood = mood - 1;
+        lcd.setCursor(0, 0);
+        lcd.print("Mood: " + String(mood) + " ");
+      } 
     }
   TouchLoop();
 }

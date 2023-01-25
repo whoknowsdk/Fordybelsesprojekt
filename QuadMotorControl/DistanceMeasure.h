@@ -1,15 +1,14 @@
-
-
 float ultraMeasure(int TRIG_PIN, int ECHO_PIN) {
   distance_cm = GetDistance(TRIG_PIN, ECHO_PIN);
   return distance_cm;
 }
 
 float filter(int TRIG_PIN, int ECHO_PIN, float filterArray[]) {
+    //int TStart = millis();
     for (int sample = 0; sample < 10; sample++) {
     filterArray[sample] = ultraMeasure(TRIG_PIN, ECHO_PIN);
-    int TStart = millis();
-    while (millis()-TStart > 30){}   // to avoid untrasonic interfering
+    //TStart = millis();
+    //while (millis()-TStart > 30){}   // to avoid untrasonic interfering
   }
 
   // 2. SORTING THE ARRAY IN ASCENDING ORDER
@@ -80,7 +79,7 @@ void FindWall(bool Sleep) {
       switch(Dir){
         case(1):
           ChangeDirection(South, 255);
-          int TStart = millis();
+          long TStart = millis();
           while (millis()-TStart > 500){}
           ChangeDirection(North, 255);
           TStart = millis();

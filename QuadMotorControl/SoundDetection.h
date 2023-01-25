@@ -34,7 +34,7 @@ void DetectSound(int totalTime, int arrL){
       Arr2[i] = analogRead(Mic2);
       Arr3[i] = analogRead(Mic3);
       Arr4[i] = analogRead(Mic4);
-      while (millis() - TNow > Delay) {TNow = millis();}
+//       while (millis() - TNow > Delay) {TNow = millis();}
     }
 
     // Filters (hopefully) all arrays at the same time.

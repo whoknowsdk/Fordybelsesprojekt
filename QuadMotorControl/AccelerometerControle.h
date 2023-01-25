@@ -51,7 +51,7 @@ void AccelerometerLoop()
 
   if (CurrX == 0 && CurrY == 0) {
       if (PrevX > abs(20) || PrevY > abs(20)){
-          happiness - 10;
+          mood - 10;
           PrevX = CurrX;
           PrevY = CurrY;
         }

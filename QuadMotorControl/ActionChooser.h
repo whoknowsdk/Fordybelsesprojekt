@@ -1,87 +1,126 @@
 int ran;
 int caseCount;
-int LastTime = millis();
 
 void efterforsk(){
-  //Afspil lyd
+    //player.play(/*Track number*/);
+    lcd.clear();
+    lcd.setCursor(2, 1);
+    lcd.print("Efterforsk");
     MotionDirection();
   }
+  
 void sang(){
-
-  // Lyd
+    //player.play(/*Track number*/);
+    lcd.clear();
+    lcd.setCursor(2, 1);
+    lcd.print("Singing");
+    ActionTime = 2000;
   }
+  
 void lur(){
-    FindWall(true);
-    int TStart = millis();
+    lcd.clear();
+    lcd.setCursor(2, 1);
+    lcd.print("Lur");
+    ActionTime = 10000;
+  //  FindWall(true);
+    //player.play(/*Track number*/);
+    
 }
+
 void snurreRundt(){
   // SPiiinnnnnn
+  lcd.clear();
+  lcd.setCursor(2, 1);
+  lcd.print("Spinning");
   int ran = random(1, 4);
   int LvsR = random(1, 3);
   int wait = ran * 1000;
- 
-  int TStart = millis();
+  ActionTime = wait;
   if (LvsR = 1){ChangeDirection(RotateLeft, 255);}
   else {ChangeDirection(RotateRight, 255);}
 }
 
 void opmearksomhed(){
-  // Lyd
+    lcd.clear();
+    lcd.setCursor(2, 1);
+    lcd.print("Wanting attention");
+    //player.play(/*Track number*/);
+    ActionTime = 7000;
     MotionDirection();
   }
   
 void selvhad(){
-    FindWall(false);
+    //player.play(/*Track number*/);
+    lcd.clear();
+    lcd.setCursor(2, 1);
+    lcd.print("Hating myself");
+    ActionTime = 10000;
+    //FindWall(false);
   }
+  
 void vrede(){
-   // Lyd
+    //player.play(/*Track number*/);
+    lcd.clear();
+    lcd.setCursor(2, 1);
+    lcd.print("Angryyy");
+    ActionTime = 7000;
     MotionDirection();
 }
 
 void nysgerrig(){
-    DetectSound(2000, 128);
+    lcd.clear();
+    lcd.setCursor(2, 1);
+    lcd.print("Curious");
+    ActionTime = 7000;
+    //DetectSound(2000, 128);
+    //player.play(/*Track number*/);
 }
 
 // ActiveAction
 // ChangeDirection(dir, speed);
 
 void ActionPicker (){
-  ran = random(0, happiness);
 
-  if (happiness > 85) {caseCount = 0;}
-  else if (happiness > 70) {caseCount = 1;}
-  else if (happiness > 45) {caseCount = 2;}
-  else if (happiness > 15) {caseCount = 3;}
-  else if (happiness > 0) {caseCount = 4;}
-
-  switch (caseCount){
-    case (0):
-      if (ran > 75) {efterforsk();}
-      else if (ran > 60) {sang();}
-      else if (ran > 55) {lur();}
-      else if (ran > 40) {snurreRundt();}
-      else if (ran > 30) {opmearksomhed();}
-      else if (ran > 0)  {nysgerrig();}
-    case (1):
-      if (ran > 90) {efterforsk();}
+  if (mood > 85) {
+    caseCount = 0;
+    ran = random(0, 90);
+    if (ran > 75) {efterforsk();}
+    else if (ran > 60) {sang();}
+    else if (ran > 55) {lur();}
+    else if (ran > 40) {snurreRundt();}
+    else if (ran > 30) {opmearksomhed();}
+    else if (ran > 0)  {nysgerrig();}
+    }
+  else if (mood > 70) {
+    caseCount = 1;
+    ran = random(0, 120);
+    if (ran > 90) {efterforsk();}
       else if (ran > 85) {lur();}
       else if (ran > 65) {snurreRundt();}
       else if (ran > 45) {opmearksomhed();}
       else if (ran > 0)  {nysgerrig();}
-            
-    case (2):
-      if (ran > 85) {efterforsk();}
+    }
+  else if (mood > 45) {
+    caseCount = 2;
+    ran = random(0, 130);
+    if (ran > 85) {efterforsk();}
       else if (ran > 75) {lur();}
       else if (ran > 45) {opmearksomhed();}
       else if (ran > 0)  {nysgerrig();}
-    case (3):
-      if (ran > 60) {efterforsk();}
+    }
+  else if (mood > 15) {
+    caseCount = 3;
+    ran = random(0, 120);
+    if (ran > 60) {efterforsk();}
       else if (ran > 45) {lur();}
       else if (ran > 25) {opmearksomhed();}
       else if (ran > 0)  {selvhad();}
-    case (4):
-      if (ran > 50) {efterforsk();}
+    }
+  else if (mood > 0) {
+    ran = random(0, 100);
+    caseCount = 4;
+    if (ran > 50) {efterforsk();}
       else if (ran > 25) {selvhad();}
       else if (ran > 0)  {vrede();}
     }
-  }
+}

@@ -3,12 +3,12 @@
 LiquidCrystal_I2C lcd(0x27, 20, 4); // set the LCD address to 0x27 for a 16 chars and 2 line display
 // Er det 4 fordi det er 4-line display? og med 20 char?
 
-String VeryHappyMsg[] = {"(❁´◡`❁)",
-  "q(≧▽≦q)",
+String VeryHappyMsg[] = {"(*´◡`*)",
+  "q(>V<q)",
   "Hej Til Alle Mine Venner",
   "Jubii !!!",
   "Jeg Elsker Livet På Skolen",
-  "Hejsa (✿◡‿◡)",
+  "Hejsa (*◡‿◡)",
   "Intet Kan Stoppe Mig!",
   "Jeg Er Uovervindelig!"};
 
@@ -17,7 +17,7 @@ String HappyMsg[] = {"Jeg Nyder At Udforske Skolen",
   "Jeg Har Det Sjovt",
   "Hihi",
   "Mine Tandhjul Summer Af Glæde",
-  "Skal Vi Til Fredagscafé",
+  "Skal Vi Til Fredagscafe",
   "Hvad Betyder Mucki Bar"};
 
 String NeutralMsg[] = {"Hej Med Dig",
@@ -25,28 +25,28 @@ String NeutralMsg[] = {"Hej Med Dig",
   "Jeg Keder Mig Lidt",
   "Hvad Er Dette Sted",
   "Hvad Er Meningen Med Livet?",
-  "Hvornår Er Der Mad",
+  "Hvornaar Er Der Mad",
   "Mit Navn Er Sennep … Hvad Er Dit ?"};
 
 String SadMsg[] = {"Jeg Savner Min Far, Mikkel Blom",
   "Hvorfor Er Jeg Her",
   "...Bip",
-  "(⊙_⊙;)",
-  "Jeg Er Træt Af At Føle Mig Uforstået",
-  "Dør Herovre LOL",
+  "(O_O;)",
+  "Jeg Er Traet Af At Foele Mig Uforstaaet",
+  "Doer Herovre LOL",
   "Det Her Sted Er Utrygt",
   "Definitionen Af Kedsomhed:",
   "Hhhhhhhhhhhhh"
 };
 
 String DepressedMsg[] = {"Jeg Hader Industrisamfundet.",
-  "Jeg Føler Mig Håbløs Og Ulykkelig.",
+  "Jeg Foeler Mig Haabloes Og Ulykkelig.",
   "Jeg Kan Ikke Se En Positiv Fremtid.",
   "(X﹏X)",
-  "(ಠ╭╮ಠ)",
-  "Fodr Mig, Små Dyr",
+  "(=╭╮=)",
+  "Fodr Mig, Smaa Dyr",
   "...",
-  "Kan Man Dø Af Det Her",
+  "Kan Man Doe Af Det Her",
   "Frygt Mig, Menneske"
 };
 
@@ -57,14 +57,15 @@ String RanMsg (String arr[], int arrL){
 
 void MsgPicker(){
   String Msg = "";
-  if (happiness >85){Msg =  RanMsg(VeryHappyMsg, 8);}
-  else if (happiness  > 70) {Msg = RanMsg(HappyMsg, 7);}
-  else if (happiness  > 45) {Msg = RanMsg(NeutralMsg, 7);}
-  else if (happiness  > 15) {Msg = RanMsg(SadMsg, 9);}
-  else if (happiness  > 0) {Msg = RanMsg(DepressedMsg, 9);}
+  if (mood >85){Msg =  RanMsg(VeryHappyMsg, 8);}
+  else if (mood  > 70) {Msg = RanMsg(HappyMsg, 7);}
+  else if (mood  > 45) {Msg = RanMsg(NeutralMsg, 7);}
+  else if (mood  > 15) {Msg = RanMsg(SadMsg, 9);}
+  else if (mood  >= 0) {Msg = RanMsg(DepressedMsg, 9);}
+  lcd.clear();
   lcd.setCursor(0, 0);
-  lcd.print("                ");
-  lcd.setCursor(0, 0);
+  lcd.print("Mood: " + String(mood) + " ");
+  lcd.setCursor(0, 1);
   lcd.print(Msg);
   }
 
@@ -73,8 +74,4 @@ void ScreenSetup()
   lcd.init(); // initialize the lcd\
   // Print a message to the LCD.
   lcd.backlight();
-  lcd.setCursor(0, 0);
-  lcd.print("Hello");
-  lcd.setCursor(0, 1);
-  lcd.print("World");
 }

@@ -41,7 +41,7 @@ void TouchLoop(void) {
       if(touchedRight == true)
       {
         Serial.println("Sennep has been touched"); 
-        happiness = happiness + 10; 
+        mood = mood + 10; 
         touchedLeft = false;
         touchedMiddle = false;
         touchedRight = false;

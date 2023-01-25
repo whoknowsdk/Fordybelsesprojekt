@@ -1,8 +1,14 @@
 //BASICS
 int mood = 50;
-int LastMsg = millis();
-int RunTime = 60*15;
-int LastDrop = millis();
+long LastMsgT;
+long RunTime = 60*15*1000;
+long LastDrop = millis();
+
+// Action variables
+
+long ActionStart = 0;
+long ActionTime = 0;
+bool Paused = false;
 
 // Dist Measure
 
