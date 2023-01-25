@@ -39,6 +39,8 @@ float distDiffW;
 
 int distance_cm;
 
+bool avoiding = false;
+
 // VARIABLE SETUP
 //
 // M = Motor
@@ -82,8 +84,6 @@ bool showDirectionInfo = false;
 bool showJoystickInfo = false;
 bool showSensorInfo = false;
 bool joystickControlOn = false;
-
-int DirCur;
 
 // Sensor Variables
 

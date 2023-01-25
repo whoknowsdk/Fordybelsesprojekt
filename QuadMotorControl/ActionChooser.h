@@ -1,5 +1,5 @@
 int ran;
-int caseCount;
+int minimumDistance = 25;
 
 void efterforsk(){
     //player.play(/*Track number*/);
@@ -81,8 +81,12 @@ void nysgerrig(){
 
 void ActionPicker (){
 
+  if (mood >= 45 && avoiding == false && distance_N <= minimumDistance || distance_E <= minimumDistance ||  distance_S <= minimumDistance || distance_W <= minimumDistance){
+    ChangeDirection(Stop);
+    Avoidance(minimumDistance);
+  }
+
   if (mood > 85) {
-    caseCount = 0;
     ran = random(0, 90);
     if (ran > 75) {efterforsk();}
     else if (ran > 60) {sang();}
@@ -92,7 +96,6 @@ void ActionPicker (){
     else if (ran > 0)  {nysgerrig();}
     }
   else if (mood > 70) {
-    caseCount = 1;
     ran = random(0, 120);
     if (ran > 90) {efterforsk();}
       else if (ran > 85) {lur();}
@@ -101,7 +104,6 @@ void ActionPicker (){
       else if (ran > 0)  {nysgerrig();}
     }
   else if (mood > 45) {
-    caseCount = 2;
     ran = random(0, 130);
     if (ran > 85) {efterforsk();}
       else if (ran > 75) {lur();}
@@ -109,7 +111,6 @@ void ActionPicker (){
       else if (ran > 0)  {nysgerrig();}
     }
   else if (mood > 15) {
-    caseCount = 3;
     ran = random(0, 120);
     if (ran > 60) {efterforsk();}
       else if (ran > 45) {lur();}
@@ -118,7 +119,6 @@ void ActionPicker (){
     }
   else if (mood > 0) {
     ran = random(0, 100);
-    caseCount = 4;
     if (ran > 50) {efterforsk();}
       else if (ran > 25) {selvhad();}
       else if (ran > 0)  {vrede();}

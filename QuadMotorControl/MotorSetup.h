@@ -1,3 +1,7 @@
+//Dette script er til for at rydde op i main scriptet, for at sikre at det ikke bare bliver et langt script.
+//Derfor tilføjes der funktioner som "FunktionNavn + Setup" eller "FunktionsNavn + Loop", som derefter kan aktiveres
+//i main setup'et eller main loop'et. Derfor er det også vigtigt at der ikke tilføjes delays i nogen af scriptsene,
+//eftesom dert ville sænke hele programmet.
 void MotorSetup(){
   pinMode(TLEN, OUTPUT);
   pinMode(BLEN, OUTPUT);

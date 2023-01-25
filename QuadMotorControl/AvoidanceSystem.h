@@ -1,80 +1,20 @@
-//Random movements her...
-//Stop kontrol
-
-// TEMP Variables:
-
-bool actionRunning = false;
-bool avoiding = false;
-State currentState = Happy;
-float actionWaitTime = 0;
-float actionRunTime = 0;
-int cooldownPeriod = 3000;
-
-float minActionRunTime = 1000;
-float maxActionRunTime = 7000;
-
-// Happy state variables
-int happyIntervalMin = 15000;
-int happyIntervalMax = 30000;
-int happyMinDistance = 25;
-
-// Scared state variables
-int scaredIntervalMin = 3000;
-int scaredIntervalMax = 7000;
-int scaredMinDistance = 100;
-
-// Depressed state variables
-int depressedIntervalMin = 60000;
-int depressedIntervalMax = 120000;
-int depressedMinDistance = 100;
-
-//
-// Variables
-//
-
-/*
-char songs[] = {
-  "sang1",
-  "sang2"
-};
-
-void SingAction() {
-  int songNr = random(sizeof(songs) / sizeof(String) - 1);
-  PlaySound(songs[songNr])
-}
-*/
-Direction GetRandomDirection(){
-  int directionNr = random(0, 9);
-  Serial.println(directionNames[directionNr]);
-  return directionNr;
-}
-
-void RunRandomAction(){
-  actionRunning = true;
-  if (currentState == Happy){
-    ChangeDirection(GetRandomDirection(), 255);
-    actionWaitTime = millis() + random(happyIntervalMin, happyIntervalMax);
-    actionRunTime = millis() + random(minActionRunTime, maxActionRunTime);
-  }
-
-  if (currentState == Scared){
-    ChangeDirection(GetRandomDirection(), 255);
-    actionWaitTime = millis() + random(scaredIntervalMin, scaredIntervalMax);
-    actionRunTime = millis() + random(minActionRunTime, maxActionRunTime);
-  }
-
-  if (currentState == Depressed){
-    ChangeDirection(GetRandomDirection(), 255);
-    actionWaitTime = millis() + random(depressedIntervalMin, depressedIntervalMax);
-    actionRunTime = millis() + random(minActionRunTime, maxActionRunTime);
-  }
-}
-
+//Avoidance systemet er med til at sørge for at robotten ikke kører ind i forhindringer, når vi ikke specifikt vil have det.
+//Derfor er programmet programmeret til at starte dette recursive blocking loop, som forhindre robotten i at kører ind i forhindringer.
+//Det tidligere nævnte program er kun delvist lavet af mig, derfor er det ikke med i afleveringen.
+//Systemet modtager en minimums distance som parametre, som den bruger til at tjekke distancerne til hver side af robotten.
 void Avoidance(float minDistance){
   Serial.print("Avoiding - ");
-  
+
+  //Eftersom det er et blocking loop, bliver sensorværdieren ikke opdateret af det normale main loop, derfor tilføjes denne linje,
+  //for at sikre at kun de mest nødvendige sensorværdier bliver brugt. Så robotten går i "fight or flight" mode, og benytter kun dens
+  //mest bersale funktioner.
   SensorLoop();
-  
+
+  //Herefter hardcodes alle blokeringsmulighederne i en række if-else statements. Dette gøres for at sikre at rækkefølgen bliver overholdt,
+  //så den ikke begynder at reagere på en blokeringsmulighede fra øst (Og dermed går vest), hvis den både bliver blokeret fra øst og vest.
+  //Derfor er de placeret så det mest relevante (4 retnings blokering) er først, derefter (3 retnings blokering), så (2 retningsblokering),
+  //og til sidst (1 regningsblokering).
+  //distance_N, distance_S, distance_E, og distance_W er forkortelser for den nuværende distance der er fra sensoren. _N = Nord, _S = Syd, _E = Øst, _W = Vest.
   if (distance_N < minDistance && distance_E < minDistance && distance_S < minDistance && distance_W < minDistance){
     ChangeDirection(RotateLeft, 255);
     Serial.println("RotateLeft - 4");
@@ -135,36 +75,14 @@ void Avoidance(float minDistance){
     ChangeDirection(East, 255);
     Serial.println("East - 1");
   }
-  
+
+  //Hvis så det viser sig at robotten ikke længere er i faresone, bliver loopet stoppet igen, og robotten går tilbage til normal
   if (distance_N >= minDistance && distance_E >= minDistance && distance_S >= minDistance && distance_W >= minDistance){
     ChangeDirection(Stop);
     avoiding = false;
-    actionRunning = true;
-    actionWaitTime = millis() + cooldownPeriod;
     return;
   }
 
+  //Derfor er denne linje sat til sidst, så loopet kan stoppes inden det gentager sig selv.
   Avoidance(minDistance);
-}
-
-void BehavioralLoop(){
-  if (avoiding == false && actionRunning == false){
-    Serial.println("Running Action");
-    RunRandomAction();
-  }
-
-  if (avoiding == false && currentState == Happy && distance_N <= happyMinDistance || distance_E <= happyMinDistance ||  distance_S <= happyMinDistance || distance_W <= happyMinDistance){
-    ChangeDirection(Stop);
-    actionRunning = false;
-    Avoidance(happyMinDistance);
-  }
-
-  if (millis() >= actionRunTime){
-    ChangeDirection(Stop);
-  }
-
-  if (millis() >= actionWaitTime){
-    ChangeDirection(Stop);
-    actionRunning = false;
-  }
 }

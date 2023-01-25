@@ -3,23 +3,21 @@
 #include "Variables.h"
 #include "DirectionEnum.h"
 #include "DirectionChange.h"
-#include "JoystickControl.h"
 #include "MotorSetup.h"
 #include "SensorControl.h"
-#include "StateEnum.h"
 #include "SoundControl.h"
-#include "BehaviouralControl.h"
+#include "AvoidanceSystem.h"
 #include "SoundDetection.h"
 
 #include "TouchSensor.h"
-#include "AccelerometerControle.h"
+#include "AccelerometerControl.h"
 #include "DistanceMeasure.h"
 
-//#include "ControllerReceiver.h"
 #include "Screen.h"
 #include "ActionChooser.h"
-//#include "RFID.h"
-  long waitTmp = millis();
+
+long waitTmp = millis();
+
 // CODE
 
 void setup() {
@@ -30,7 +28,6 @@ void setup() {
   lcd.setCursor(0, 1);
   lcd.print("(^-^)");
   //SoundDetectionSetup();
-  //RFIDSetup();
   //MotorSetup();
   SensorSetup();
   //ReceiverSetup();
@@ -41,16 +38,6 @@ void setup() {
 }
 
 void loop(){  
-  /*if (millis() - waitTmp > 5000) {
-     ChangeDirection(North, 255);
-     waitTmp = millis();
-    }*/
-
-  //SensorLoop();
-  // DirCur = Direction Currently - For Bloms' skyld findes denne kommentar. 
-
-
-
   if (millis() - ActionStart > ActionTime) {
       //lcd.print("Doing something");
       ActionStart = millis();
