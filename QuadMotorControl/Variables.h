@@ -38,6 +38,14 @@ float distDiffS;
 float distDiffE;
 float distDiffW;
 
+float distRawN[10];
+float distRawS[10];
+float distRawE[10];
+float distRawW[10];
+
+float distTimer;
+int distCount = 0;
+
 int distance_cm;
 
 bool avoiding = false;

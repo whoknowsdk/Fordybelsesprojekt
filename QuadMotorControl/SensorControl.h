@@ -26,6 +26,20 @@ void SensorLoop(){
   distance_E = GetDistance(TRE, ECE);
   distance_S = GetDistance(TRS, ECS);
   distance_W = GetDistance(TRW, ECW);
+
+  
+  // Measurements per 30th ms
+
+  if (millis()- distTimer > 30) {
+    distTimer = millis();
+    distRawN[distCount] = distance_N;
+    distRawS[distCount] = distance_S;
+    distRawE[distCount] = distance_E;
+    distRawW[distCount] = distance_W;
+
+    distCount ++;
+    if (distCount == 10) {distCount = 0;}
+    }
   
   if (showSensorInfo) {
     Serial.print("N: ");
