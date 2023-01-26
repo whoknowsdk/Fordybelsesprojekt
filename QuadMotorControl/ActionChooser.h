@@ -1,8 +1,11 @@
 int ran;
 int minimumDistance = 25;
 
+SoundTrack angryTracks[] {Sur1, Sur2, Sur3};
+SoundTrack passivTracks[] {Passiv1, Passiv2, Passiv3};
+
 void efterforsk(){
-    //player.play(/*Track number*/);
+    PlayRandomSound(passivTracks);
     lcd.clear();
     lcd.setCursor(2, 1);
     lcd.print("Efterforsk");
@@ -10,7 +13,7 @@ void efterforsk(){
   }
   
 void sang(){
-    //player.play(/*Track number*/);
+    PlaySound(Sang1);
     lcd.clear();
     lcd.setCursor(2, 1);
     lcd.print("Singing");
@@ -23,7 +26,7 @@ void lur(){
     lcd.print("Lur");
     ActionTime = 10000;
   //  FindWall(true);
-    //player.play(/*Track number*/);
+    PlaySound(Snork1);
     
 }
 
@@ -44,27 +47,27 @@ void opmearksomhed(){
     lcd.clear();
     lcd.setCursor(2, 1);
     lcd.print("Wanting attention");
-    //player.play(/*Track number*/);
+    PlayRandomSound(passivTracks);
     ActionTime = 7000;
     MotionDirection();
   }
   
 void selvhad(){
-    //player.play(/*Track number*/);
-    lcd.clear();
-    lcd.setCursor(2, 1);
-    lcd.print("Hating myself");
-    ActionTime = 10000;
-    //FindWall(false);
-  }
+  PlayRandomSound(angryTracks);
+  lcd.clear();
+  lcd.setCursor(2, 1);
+  lcd.print("Hating myself");
+  ActionTime = 10000;
+  //FindWall(false);
+}
   
 void vrede(){
-    //player.play(/*Track number*/);
-    lcd.clear();
-    lcd.setCursor(2, 1);
-    lcd.print("Angryyy");
-    ActionTime = 7000;
-    MotionDirection();
+  PlayRandomSound(angryTracks);
+  lcd.clear();
+  lcd.setCursor(2, 1);
+  lcd.print("Angryyy");
+  ActionTime = 7000;
+  MotionDirection();
 }
 
 void nysgerrig(){
@@ -73,7 +76,7 @@ void nysgerrig(){
     lcd.print("Curious");
     ActionTime = 7000;
     //DetectSound(2000, 128);
-    //player.play(/*Track number*/);
+    PlayRandomSound(passivTracks);
 }
 
 // ActiveAction

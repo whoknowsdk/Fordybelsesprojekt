@@ -28,16 +28,14 @@ void setup() {
   lcd.setCursor(0, 1);
   lcd.print("(^-^)");
   //SoundDetectionSetup();
-  //MotorSetup();
+  MotorSetup();
   SensorSetup();
-  //ReceiverSetup();
-  showSensorInfo = true;
-  //joystickControlOn = false;
-  //ChangeDirection(North, 255);
-  
+  SoundPlayerSetup();
+  showSensorInfo = false;
+  delay(5000);
 }
 
-void loop(){  
+void loop(){
   if (millis() - ActionStart > ActionTime) {
       //lcd.print("Doing something");
       ActionStart = millis();
@@ -57,5 +55,6 @@ void loop(){
         lcd.print("Mood: " + String(mood) + " ");
       } 
     }
+  SensorLoop();
   TouchLoop();
 }

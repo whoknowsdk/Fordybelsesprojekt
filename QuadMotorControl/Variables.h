@@ -3,6 +3,7 @@ int mood = 50;
 long LastMsgT;
 long RunTime = 60*15*1000;
 long LastDrop = millis();
+int volumeLevel = 15;
 
 // Action variables
 
