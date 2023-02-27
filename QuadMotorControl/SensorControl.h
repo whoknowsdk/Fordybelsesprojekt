@@ -38,7 +38,7 @@ void SensorLoop(){
     distRawW[distCount] = distance_W;
 
     distCount ++;
-    if (distCount == 10) {distCount = 0;}
+    if (distCount == 20) {distCount = 0;}
     }
   
   if (showSensorInfo) {
