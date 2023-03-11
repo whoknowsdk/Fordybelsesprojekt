@@ -10,7 +10,6 @@
 #include "SoundDetection.h"
 
 #include "TouchSensor.h"
-#include "AccelerometerControl.h"
 #include "DistanceMeasure.h"
 
 #include "Screen.h"
