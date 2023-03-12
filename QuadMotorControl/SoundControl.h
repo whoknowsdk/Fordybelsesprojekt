@@ -2,7 +2,6 @@
 #include "DFRobotDFPlayerMini.h"
 
 SoftwareSerial softwareSerial(10, 11);
-
 DFRobotDFPlayerMini player;
 
 void SoundPlayerSetup() {
@@ -43,8 +42,7 @@ const char* soundTrackNames[] = {
 
 void PlaySound(SoundTrack track){
   if (digitalRead(7) == 1){
-    player.play(track + 1);
-    
+    player.play(track + 1); 
   }
 }
 
