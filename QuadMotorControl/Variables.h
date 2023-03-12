@@ -118,5 +118,5 @@ float distance_E;
 float distance_S;
 float distance_W;
 
-float minDistance = 5;
+float minDistance = 10;
 float maxDistance = 130;
