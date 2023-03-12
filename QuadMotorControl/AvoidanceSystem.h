@@ -13,7 +13,7 @@ void Avoidance(float minDistance){
   //Herefter hardcodes alle blokeringsmulighederne i en række if-else statements. Dette gøres for at sikre at rækkefølgen bliver overholdt,
   //så den ikke begynder at reagere på en blokeringsmulighede fra øst (Og dermed går vest), hvis den både bliver blokeret fra øst og vest.
   //Derfor er de placeret så det mest relevante (4 retnings blokering) er først, derefter (3 retnings blokering), så (2 retningsblokering),
-  //og til sidst (1 regningsblokering).
+  //og til sidst (1 retningsblokering).
   //distance_N, distance_S, distance_E, og distance_W er forkortelser for den nuværende distance der er fra sensoren. _N = Nord, _S = Syd, _E = Øst, _W = Vest.
   if (distance_N < minDistance && distance_E < minDistance && distance_S < minDistance && distance_W < minDistance){
     ChangeDirection(RotateLeft, 255);
