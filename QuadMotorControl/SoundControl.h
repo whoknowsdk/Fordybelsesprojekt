@@ -6,7 +6,6 @@ SoftwareSerial softwareSerial(10, 11);
 DFRobotDFPlayerMini player;
 
 void SoundPlayerSetup() {
-  Serial.begin(9600);
   softwareSerial.begin(9600);
   
   if (player.begin(softwareSerial)) {
